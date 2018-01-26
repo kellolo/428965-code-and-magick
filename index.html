@@ -180,7 +180,31 @@
     <p class="setup-similar-label">Петр Петров</p>
   </div>
 </template>
+<script type="text/javascript">
+	var fireballSize = 22;
+	var getFireballSpeed;
 
+	wizardSpeed = 3;
+	wizardWidth = 70;
+	getWizardHeight = function() {
+		wizardHeight = wizardWidth * 1.337;
+		return wizardHeight;
+	};
+
+	function getWizardX(width){
+		var startPandalfX = (width - wizardWidth)/2;
+		return startPandalfX;
+	}
+
+	function getWizardY(height){
+		var startPandalfY = height - 2*(height/3);
+		//или просто height/3, но оно как бы не соответствует формулировке задания про 2/3, поэтому я хз какой из вариантов
+		return startPandalfY;
+	}
+
+console.log(getWizardY());
+console.log(getWizardX());
+</script>
 <script src="js/game.js"></script>
 
 </body>
