@@ -23,7 +23,6 @@ var getMaxElement = function (arr) {
       maxElement = arr[i];
     }
   }
-  
   return maxElement;
 };
 
