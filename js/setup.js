@@ -29,7 +29,7 @@ coatColorGen = generateData.coatColorGen;
 eyesColorGen = generateData.eyesColorGen;
 
 var generateObjects = function () {
-  for (var j = 0; j < 4; j++) {
+  for (let i = 0; i < 4; i++) {
     generateData ();
     const newWizard = {
       name: nameGen,
@@ -61,7 +61,7 @@ var renderWizard = function (wizard) {
 };
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < wizards.length; i++) {
+for (let i = 0; i < wizards.length; i++) {
   fragment.appendChild(renderWizard(wizards[i]));
 };
 
