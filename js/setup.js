@@ -29,7 +29,7 @@ coatColorGen = generateData.coatColorGen;
 eyesColorGen = generateData.eyesColorGen;
 
 var generateObjects = function () {
-  for (let i = 0; i < 4; i++) {
+  for (var j = 0; j < 4; j++) {
     generateData ();
     const newWizard = {
       name: nameGen,
