@@ -29,9 +29,9 @@ coatColorGen = generateData.coatColorGen;
 eyesColorGen = generateData.eyesColorGen;
 
 var generateObjects = function () {
-  for (let i = 0; i < 4; i++) {
+  for (var i = 0; i < 4; i++) {
     generateData();
-    const newWizard = {
+    var newWizard = {
       name: nameGen,
       coatColor: coatColorGen,
       eyesColor: eyesColorGen
@@ -61,8 +61,8 @@ var renderWizard = function (wizard) {
 };
 
 var fragment = document.createDocumentFragment();
-for (let i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
+for (var j = 0; j < wizards.length; j++) {
+  fragment.appendChild(renderWizard(wizards[j]));
 };
 
 similarListElement.appendChild(fragment);
