@@ -30,7 +30,7 @@ eyesColorGen = generateData.eyesColorGen;
 
 var generateObjects = function () {
   for (let i = 0; i < 4; i++) {
-    generateData ();
+    generateData();
     const newWizard = {
       name: nameGen,
       coatColor: coatColorGen,
@@ -41,7 +41,7 @@ var generateObjects = function () {
   return wizards;
 }
 
-generateObjects ();
+generateObjects();
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
