@@ -14,15 +14,11 @@ var similarListElement = userDialog.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
 
 var generateData = function () {
-  nameGen = WIZARD_NAMES[Math.floor(Math.random () * WIZARD_NAMES.length)] + ' ' + WIZARD_2NDNAMES[Math.floor(Math.random () * WIZARD_2NDNAMES.length)];
-  coatColorGen = COATS[Math.floor(Math.random () * COATS.length)];
-  eyesColorGen = EYES[Math.floor(Math.random () * EYES.length)];
-  return {
-    nameGen: nameGen, 
-    coatColorGen: coatColorGen, 
-    eyesColorGen: eyesColorGen
-  };
-}
+  nameGen = WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ' ' + WIZARD_2NDNAMES[Math.floor(Math.random() * WIZARD_2NDNAMES.length)];
+  coatColorGen = COATS[Math.floor(Math.random() * COATS.length)];
+  eyesColorGen = EYES[Math.floor(Math.random() * EYES.length)];
+  return {nameGen: nameGen, coatColorGen: coatColorGen, eyesColorGen: eyesColorGen};
+};
 
 nameGen = generateData.nameGen;
 coatColorGen = generateData.coatColorGen;
@@ -39,16 +35,9 @@ var generateObjects = function () {
     wizards.push(newWizard);
   }
   return wizards;
-}
+};
 
 generateObjects();
-
-var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
-
-var similarListElement = userDialog.querySelector('.setup-similar-list');
-
-var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
