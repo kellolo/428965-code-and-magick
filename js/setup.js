@@ -10,12 +10,12 @@ userDialog.classList.remove('hidden');
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
 
-var genData = function (name, eye, coat, names, coats, eyes, i) {
+var genData = function (name, eye, coat, names, coats, eyes) {
   names = [];
   coats = [];
   eyes = [];
 
-  for (i = 0; i < 4; i++) {
+  while (names.length < 4) {
     name = WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ' ' + WIZARD_2NDNAMES[Math.floor(Math.random() * WIZARD_2NDNAMES.length)];
     coat = COATS[Math.floor(Math.random() * COATS.length)];
     eye = EYES[Math.floor(Math.random() * EYES.length)];
@@ -23,9 +23,7 @@ var genData = function (name, eye, coat, names, coats, eyes, i) {
       names.push(name);
       coats.push(coat);
       eyes.push(eye);
-    } else {
-      i--;
-    }
+    } 
   }
   return {names: names, eyes: eyes, coats: coats};
 };
