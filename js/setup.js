@@ -23,7 +23,7 @@ var genData = function (name, eye, coat, names, coats, eyes) {
       names.push(name);
       coats.push(coat);
       eyes.push(eye);
-    } 
+    }
   }
   return {names: names, eyes: eyes, coats: coats};
 };
