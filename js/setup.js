@@ -77,18 +77,30 @@ var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 
-var openPopup = function() {
+var openPopup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
 };
 
-var closePopup = function() {
+var closePopup = function () {
   setup.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscPress);
 };
 
+var nameInput = document.querySelector('#charName');
+var x = false;
+
+nameInput.addEventListener('focus', function() {
+  nameInput.classList.add('focused');
+}, true);
+
+nameInput.addEventListener('blur', function() {
+  nameInput.classList.remove('focused');
+}, true);
+
+
 var onPopupEscPress = function(evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
+  if (evt.keyCode === ESC_KEYCODE && nameInput.classList.contains('focused') === false) {
     closePopup();
   }
 };
@@ -107,8 +119,12 @@ setupClose.addEventListener('click', function() {
   closePopup();
 });
 
-// ВСЯ НЕПОНЯТНАЯ ХЕРЬ ТУТ
-//***НАЧАЛО***
+setupClose.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
 
 if (setup.classList.contains('hidden')) {
   setupOpen.addEventListener('focus', function(evt) {
@@ -118,58 +134,48 @@ if (setup.classList.contains('hidden')) {
   });
 }
 
-// ***КОНЕЦ НЕПОНЯТНОЙ ХРЕНИ***
 
 var setupWizard = document.querySelector('.setup-wizard');
 var setupCoat = document.querySelector('.wizard-coat');
 
-var switchColor = function() {
-  
+
+var changeCoatColor = function() {
+  var currentCoatColor = COATS.indexOf(setupCoat.style.fill);
+  if (currentCoatColor < (COATS.length - 1)) {
+    currentCoatColor++;
+  } else {
+    currentCoatColor = 0;
+  }
+  setupCoat.style.fill = COATS[currentCoatColor];
 };
 
-var changeCoatColor = function(currentColor) {
-  currentColor = COATS.indexOf(setupCoat.style.fill);
-  if (currentColor < (COATS.length - 1)) {
-    currentColor = currentColor + 1;
+var setupEyes = document.querySelector('.wizard-eyes');
+
+var changeEyesColor = function() {
+  var currentEyesColor = EYES.indexOf(setupEyes.style.fill);
+  if (currentEyesColor < (EYES.length - 1)) {
+    currentEyesColor++;
   } else {
-    currentColor = 0;
+    currentEyesColor = 0;
   }
-  setupCoat.style.fill = COATS[currentColor];
+  setupEyes.style.fill = EYES[currentEyesColor];
+};
+
+var setupFireball = document.querySelector('.setup-fireball-wrap');
+
+var currentFireballColor = 0;
+
+var changeFBColor = function() {
+  if (currentFireballColor < (FIREBALLS.length - 1)) {
+    currentFireballColor++;
+    
+  } else {
+    currentFireballColor = 0;
+  }
+  setupFireball.style.backgroundColor = FIREBALLS[currentFireballColor];
 };
 
 setupCoat.addEventListener('click', changeCoatColor);
-
-var setupEyes = document.querySelector('.wizard-eyes');
-var changeEyesColor = function(currentColor) {
-  currentColor = EYES.indexOf(setupEyes.style.fill);
-  if (currentColor < (EYES.length - 1)) {
-    currentColor = currentColor + 1;
-  } else {
-    currentColor = 0;
-  }
-  setupEyes.style.fill = EYES[currentColor];
-};
-
 setupEyes.addEventListener('click', changeEyesColor);
-
-
-var setupFireball = document.querySelector('.setup-fireball-wrap');
-var changeFBColor = function(currentColor) {
-
-  currentColor = FIREBALLS.indexOf(setupFireball.style.backgroundColor);
-
-  if (FIREBALLS.indexOf(currentColor) < 0 || currentColor == null) {
-    FIREBALLS.push(currentColor);
-  } else {
-    if (currentColor < (FIREBALLS.length - 1)) {
-      currentColor = currentColor + 1;
-    } else {
-      currentColor = 0;
-    }
-  }
-  
-  setupFireball.style.backgroundColor = FIREBALLS[currentColor];
-  console.log(setupFireball.style.backgroundColor);
-};
-
 setupFireball.addEventListener('click', changeFBColor);
+
