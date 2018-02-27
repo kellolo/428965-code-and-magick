@@ -88,38 +88,37 @@ var closePopup = function () {
 };
 
 var nameInput = document.querySelector('#charName');
-var x = false;
 
-nameInput.addEventListener('focus', function() {
+nameInput.addEventListener('focus', function () {
   nameInput.classList.add('focused');
 }, true);
 
-nameInput.addEventListener('blur', function() {
+nameInput.addEventListener('blur', function () {
   nameInput.classList.remove('focused');
 }, true);
 
 
-var onPopupEscPress = function(evt) {
+var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE && nameInput.classList.contains('focused') === false) {
     closePopup();
   }
 };
 
-setupOpen.addEventListener('keydown', function(evt) {
+setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     openPopup();
   }
 });
 
-setupOpen.addEventListener('click', function() {
+setupOpen.addEventListener('click', function () {
   openPopup();
 });
 
-setupClose.addEventListener('click', function() {
+setupClose.addEventListener('click', function () {
   closePopup();
 });
 
-setupClose.addEventListener('keydown', function(evt) {
+setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
@@ -127,19 +126,16 @@ setupClose.addEventListener('keydown', function(evt) {
 
 
 if (setup.classList.contains('hidden')) {
-  setupOpen.addEventListener('focus', function(evt) {
-      if (evt.keyCode === ENTER_KEYCODE) {
-        openPopup();
-      }
+  setupOpen.addEventListener('focus', function (evt) {
+    if (evt.keyCode === ENTER_KEYCODE) {
+      openPopup();
+    }
   });
 }
 
-
-var setupWizard = document.querySelector('.setup-wizard');
 var setupCoat = document.querySelector('.wizard-coat');
 
-
-var changeCoatColor = function() {
+var changeCoatColor = function () {
   var currentCoatColor = COATS.indexOf(setupCoat.style.fill);
   if (currentCoatColor < (COATS.length - 1)) {
     currentCoatColor++;
@@ -151,7 +147,7 @@ var changeCoatColor = function() {
 
 var setupEyes = document.querySelector('.wizard-eyes');
 
-var changeEyesColor = function() {
+var changeEyesColor = function () {
   var currentEyesColor = EYES.indexOf(setupEyes.style.fill);
   if (currentEyesColor < (EYES.length - 1)) {
     currentEyesColor++;
@@ -165,10 +161,9 @@ var setupFireball = document.querySelector('.setup-fireball-wrap');
 
 var currentFireballColor = 0;
 
-var changeFBColor = function() {
+var changeFBColor = function () {
   if (currentFireballColor < (FIREBALLS.length - 1)) {
     currentFireballColor++;
-    
   } else {
     currentFireballColor = 0;
   }
@@ -178,4 +173,3 @@ var changeFBColor = function() {
 setupCoat.addEventListener('click', changeCoatColor);
 setupEyes.addEventListener('click', changeEyesColor);
 setupFireball.addEventListener('click', changeFBColor);
-
